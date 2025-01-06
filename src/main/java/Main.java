@@ -39,11 +39,14 @@ public class Main {
             int speed;
             while (true){
                 System.out.println("Введите скорость автомобиля №" + i);
-                speed = scanner.nextInt();
+                // Если пользователь ввёл не целое число, то в переменную speed запишется значение -1
+                // Которое в любом случае не входит в диапазон
+                speed = scanner.hasNextInt() ? scanner.nextInt() : -1;
                 if(speed > 0 && speed <= 250)
                     break;
                 else{
-                    System.out.println("Скорость автомобиля должны быть в диапозоне от 0 до 250");
+                    System.out.println("Скорость автомобиля должна быть целым число и находится в диапозоне от 0 до 250");
+                    scanner.next();
                 }
             }
             Car car = new Car(name, speed);
